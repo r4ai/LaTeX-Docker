@@ -1,5 +1,5 @@
 # LaTeX-Docker
-my pandoc $\LaTeX$ environment.
+my pandoc $\mathrm{\LaTeX}$ environment.
 
 ## how to build.
 ```bash
