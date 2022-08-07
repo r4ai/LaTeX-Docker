@@ -5,7 +5,7 @@ includes below two Dockerfiles.
 
 1. r4ai/latex  
    - based on [paperist/texlive-ja](https://github.com/Paperist/texlive-ja)  
-   - includes **luatex, bxlatex ...**
+   - includes **luatex, xelatex ...**
    - amd64 & arm64 support. (M1 support)
 1. r4ai/pandoc
    - based on r4ai/latex.
