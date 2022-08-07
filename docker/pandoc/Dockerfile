@@ -6,17 +6,9 @@ RUN apt-get update && apt-get upgrade -y && \
     apt-get install -y \
     curl \
     gawk \
-    xz-utils
-RUN tlmgr update --self --all && tlmgr update latex \
-    tlmgr install \
-    luatexja \
-    bxjscls \
-    bxwareki \
-    everyhook \
-    svn-prov \
-    type1cm \
-    ipaex \
-    haranoaji
-RUN /tmp/pandoc_installer.sh "arm64"
+    xz-utils \
+    wkhtmltopdf
+RUN chmod -R 777 /tmp/ && \
+    /tmp/pandoc_installer.sh 'amd64'
 ENTRYPOINT [ "/usr/bin/pandoc" ]
 WORKDIR /build

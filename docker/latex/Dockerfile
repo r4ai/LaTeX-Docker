@@ -5,4 +5,18 @@ RUN apt-get update \
     libfontconfig1 \
   && rm -rf /var/lib/apt/lists/*
 
-RUN tlmgr install collection-xetex ctex
+RUN tlmgr update --self --all && tlmgr update latex \
+    tlmgr install \
+    luatexja \
+    bxjscls \
+    collection-langjapanese \
+    babel-japanese \
+    bxwareki \
+    everyhook \
+    svn-prov \
+    type1cm \
+    ipaex \
+    haranoaji \
+    collection-xetex \
+    svn-prov \
+    ctex

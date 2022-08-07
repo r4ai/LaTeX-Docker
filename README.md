@@ -3,8 +3,15 @@
 my pandoc $\mathrm{\LaTeX}$ environment.  
 includes below two Dockerfiles.
 
-1. r4ai/latex
-2. r4ai/pandoc
+1. r4ai/latex  
+   - based on [paperist/texlive-ja](https://github.com/Paperist/texlive-ja)  
+   - includes **luatex, bxlatex ...**
+   - amd64 & arm64 support. (M1 support)
+1. r4ai/pandoc
+   - based on r4ai/latex.
+   - includes **pandoc, pandoc-crossref** ...
+   - **not arm64** support. only support amd64.  
+     (because pandoc-crossref couldn't build with arm64 debian)
 
 # how to build.
 ## r4ai/latex (texlive)
@@ -28,11 +35,16 @@ docker run --rm -it \
 ## generate pdf from md using LaTeX. (r4ai/pandoc)
 ```bash
 docker run --rm \
-    --volume "$(pwd):/data" \
+    --volume "$(pwd):/build" \
     --user $(id -u):$(id -g) \
-    pandoc/latex-ja:latest input.md -o output.pdf \
+    r4ai/pandoc:latest input.md -o output.pdf \
         --pdf-engine=xelatex \
-        -V documentclass=ltjsarticle
+        -V documentclass=bxjsarticle \
+        -V classoption=pandoc \
+        -M listings --listings \
+        -H /settings/header.tex \
+        --metadata-file /settings/metadata.yml \
+        -F /usr/lib/pandoc-crossref
 ```
 
 # how to debug.
@@ -43,5 +55,5 @@ open bash.
 docker run --rm -it \
       --volume "$(pwd):/build" \
       --entrypoint /bin/bash \
-      r4ai/pandoc:latest-arm64
+      r4ai/pandoc:latest
 ```
