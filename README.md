@@ -9,9 +9,9 @@ includes below two Dockerfiles.
    - amd64 & arm64 support. (M1 support)
 1. r4ai/pandoc
    - based on r4ai/latex.
-   - includes **pandoc, pandoc-crossref** ...
+   - includes **pandoc, pandoc-crossref, easy-pandoc-templates** ...
    - **not arm64** support. only support amd64.  
-     (because pandoc-crossref couldn't build with arm64 debian)
+     (because pandoc-crossref couldn't be built with arm64 debian)
 
 # how to build.
 ## r4ai/latex (texlive)
@@ -25,14 +25,16 @@ docker build -f docker/pandoc/Dockerfile -t r4ai/pandoc:latest .
 ```
 
 # how to use.
-## compile .tex and generate pdf. (r4ai/latex)
+## r4ai/latex
+compile .tex and generate pdf.
 ```bash
 docker run --rm -it \
     --volume $PWD:/workdir r4ai/latex:latest \
     sh -c 'ptex2pdf -l -ot -kanji=utf8 -synctex=1 -interaction=nonstopmode -halt-on-error -file-line-error main.tex'
 ```
 
-## generate pdf from md using LaTeX. (r4ai/pandoc)
+## r4ai/pandoc
+Generate PDF from markdown by LaTeX
 ```bash
 docker run --rm \
     --volume "$(pwd):/build" \
@@ -43,10 +45,21 @@ docker run --rm \
         -V classoption=pandoc \
         -M listings --listings \
         -H /settings/header.tex \
+        -H /settings/deeplists.tex \
         --metadata-file /settings/metadata.yml \
         -F /usr/lib/pandoc-crossref
 ```
 
+Generate PDF from markdown by html5.
+```bash
+docker run --rm \
+    --volume "$(pwd):/build" \
+    r4ai/pandoc:latest input.md -o output.pdf \
+        -t html5 \
+        --template=easy_template.html \
+        --metadata-file /settings/metadata.yml \
+        -F /usr/lib/pandoc-crossref
+```
 # how to debug.
 
 ## r4ai/pandoc

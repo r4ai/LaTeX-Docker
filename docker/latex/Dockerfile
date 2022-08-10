@@ -1,9 +1,9 @@
 FROM paperist/texlive-ja:latest
 
 RUN apt-get update \
-  && apt-get install -y \
-    libfontconfig1 \
-  && rm -rf /var/lib/apt/lists/*
+	&& apt-get install -y \
+		libfontconfig1 \
+	&& rm -rf /var/lib/apt/lists/*
 
 RUN tlmgr update --self --all && tlmgr update latex \
     tlmgr install \
@@ -20,3 +20,7 @@ RUN tlmgr update --self --all && tlmgr update latex \
     collection-xetex \
     svn-prov \
     ctex
+
+RUN cp -R /usr/local/texlive/2022/texmf-dist/fonts/truetype/public/ipaex/ /usr/share/fonts/truetype/ && \
+	cp -R /usr/local/texlive/2022/texmf-dist/fonts/opentype/public/haranoaji/ /usr/share/fonts/opentype/ && \
+	cp -R /usr/local/texlive/2022/texmf-dist/fonts/opentype/public/haranoaji-extra/ /usr/share/fonts/opentype/
