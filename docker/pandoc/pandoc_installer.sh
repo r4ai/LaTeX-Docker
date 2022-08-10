@@ -35,7 +35,7 @@ function pandoc-crossref_install() {
         && tar xfv "${pandoc_crossref_file_name}.tar" \
         && rm -rf pandoc-crossref.1 \
         && rm -f "${pandoc_crossref_file_name}.tar" \
-        && mv pandoc-crossref /usr/lib/
+        && mv pandoc-crossref /usr/bin/
 }
 pandoc_install $1
 pandoc-crossref_install

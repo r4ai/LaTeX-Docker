@@ -47,7 +47,7 @@ docker run --rm \
         -H /settings/header.tex \
         -H /settings/deeplists.tex \
         --metadata-file /settings/metadata.yml \
-        -F /usr/lib/pandoc-crossref
+        -F pandoc-crossref
 ```
 
 Generate PDF from markdown by html5.
@@ -58,7 +58,7 @@ docker run --rm \
         -t html5 \
         --template=easy_template.html \
         --metadata-file /settings/metadata.yml \
-        -F /usr/lib/pandoc-crossref
+        -F pandoc-crossref
 ```
 # how to debug.
 
