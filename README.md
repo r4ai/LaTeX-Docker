@@ -1,7 +1,7 @@
 # LaTeX-Docker
 
 my pandoc $\mathrm{\LaTeX}$ environment.  
-includes below two Dockerfiles.
+This contains the following two Dockerfiles
 
 1. r4ai/latex  
    - based on [paperist/texlive-ja](https://github.com/Paperist/texlive-ja)  
