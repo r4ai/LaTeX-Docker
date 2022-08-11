@@ -23,8 +23,8 @@ jobs:
         builder: ${{ steps.buildx.outputs.name }}
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/latex:latest
-        chache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/latex:buildcache
-        chache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/latex:buildcache,mode=max
+        cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/latex:buildcache
+        cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/latex:buildcache,mode=max
     - name: Build and push pandoc image
       uses: docker/build-push-action@v3
       with:
@@ -33,5 +33,5 @@ jobs:
         builder: ${{ steps.buildx.outputs.name }}
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/pandoc:latest
-        chache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/pandoc:buildcache
-        chache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/pandoc:buildcache,mode=max
+        cache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/pandoc:buildcache
+        cache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/pandoc:buildcache,mode=max
