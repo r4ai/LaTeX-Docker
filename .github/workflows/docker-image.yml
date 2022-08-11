@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build and push docker image
 on:
   push:
     branches: [ "main" ]
@@ -15,7 +15,17 @@ jobs:
       with:
         username: ${{ secrets.DOCKER_HUB_USERNAME }}
         password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
-    - name: Build and push
+    - name: Build and push latex image
+      uses: docker/build-push-action@v3
+      with:
+        context: ./
+        file: ./docker/latex/Dockerfile
+        builder: ${{ steps.buildx.outputs.name }}
+        push: true
+        tags: ${{ secrets.DOCKER_HUB_USERNAME }}/latex:latest
+        chache-from: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/latex:buildcache
+        chache-to: type=registry,ref=${{ secrets.DOCKER_HUB_USERNAME }}/latex:buildcache,mode=max
+    - name: Build and push pandoc image
       uses: docker/build-push-action@v3
       with:
         context: ./
