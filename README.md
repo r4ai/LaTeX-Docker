@@ -3,11 +3,11 @@
 my pandoc $\mathrm{\LaTeX}$ environment.  
 This contains the following two Dockerfiles
 
-1. r4ai/latex  
+1. [r4ai/latex](https://hub.docker.com/repository/docker/r4ai/latex) 
    - based on [paperist/texlive-ja](https://github.com/Paperist/texlive-ja)  
    - includes **luatex, xelatex ...**
    - amd64 & arm64 support. (M1 support)
-1. r4ai/pandoc
+1. [r4ai/pandoc](https://hub.docker.com/repository/docker/r4ai/pandoc)
    - based on r4ai/latex.
    - includes **pandoc, pandoc-crossref, easy-pandoc-templates** ...
    - **not arm64** support. only support amd64.  
