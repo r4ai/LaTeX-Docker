@@ -1,4 +1,4 @@
-# LaTeX-Docker
+# LaTeX-Docker　[![Build and push docker image](https://github.com/e9716/LaTeX-Docker/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/e9716/LaTeX-Docker/actions/workflows/docker-image.yml)
 
 my pandoc $\mathrm{\LaTeX}$ environment.  
 This repository contains the following two Dockerfiles
