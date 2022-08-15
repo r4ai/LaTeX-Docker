@@ -38,4 +38,6 @@ function pandoc-crossref_install() {
         && mv pandoc-crossref /usr/bin/
 }
 pandoc_install $1
-pandoc-crossref_install
+if [ "$1" == "amd64" ]; then
+    pandoc-crossref_install
+fi

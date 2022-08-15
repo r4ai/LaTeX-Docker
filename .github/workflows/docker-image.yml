@@ -39,7 +39,7 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         context: ./
-        platforms: linux/amd64
+        platforms: linux/amd64,linux/arm64
         file: ./docker/pandoc/Dockerfile
         push: true
         tags: ${{ secrets.DOCKER_HUB_USERNAME }}/pandoc:latest
