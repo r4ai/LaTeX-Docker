@@ -1,32 +1,38 @@
 # LaTeX-Docker　[![Build and push docker image](https://github.com/e9716/LaTeX-Docker/actions/workflows/docker-image.yml/badge.svg?branch=main)](https://github.com/e9716/LaTeX-Docker/actions/workflows/docker-image.yml)
 
-my pandoc $\mathrm{\LaTeX}$ environment.  
+my pandoc $\mathrm{\LaTeX}$ environment.
 This repository contains the following two Dockerfiles
 
-1. [r4ai/latex](https://hub.docker.com/r/r4ai/latex) 
-   - based on [paperist/texlive-ja](https://github.com/Paperist/texlive-ja)  
+1. [r4ai/latex](https://hub.docker.com/r/r4ai/latex)
+   - based on [paperist/texlive-ja](https://github.com/Paperist/texlive-ja)
    - includes **luatex, xelatex ...**
    - amd64 & arm64 support. (M1 support)
 1. [r4ai/pandoc](https://hub.docker.com/r/r4ai/pandoc)
    - based on r4ai/latex.
    - includes **pandoc, pandoc-crossref, easy-pandoc-templates** ...
-   - **not arm64** support. only support amd64.  
+   - **not arm64** support. only support amd64.
      (because pandoc-crossref couldn't be built with arm64 debian)
 
-# how to build.
+## how to build
+
 ## r4ai/latex (texlive)
+
 ```bash
 docker build -f docker/latex/Dockerfile -t r4ai/latex:latest .
 ```
 
 ## r4ai/pandoc (pandoc)
+
 ```bash
 docker build -f docker/pandoc/Dockerfile -t r4ai/pandoc:latest .
 ```
 
-# how to use.
+## how to use
+
 ## r4ai/latex
+
 compile .tex and generate pdf.
+
 ```bash
 docker run --rm -it \
     --volume $PWD:/workdir r4ai/latex:latest \
@@ -34,7 +40,9 @@ docker run --rm -it \
 ```
 
 ## r4ai/pandoc
+
 Generate PDF from markdown by LaTeX
+
 ```bash
 docker run --rm \
     --volume "$(pwd):/build" \
@@ -51,6 +59,7 @@ docker run --rm \
 ```
 
 Generate PDF from markdown by html5.
+
 ```bash
 docker run --rm \
     --volume "$(pwd):/build" \
@@ -60,10 +69,13 @@ docker run --rm \
         --metadata-file /settings/metadata.yml \
         -F pandoc-crossref
 ```
-# how to debug.
 
-## r4ai/pandoc
+## how to debug
+
+### r4ai/pandoc
+
 open bash.
+
 ```bash
 docker run --rm -it \
       --volume "$(pwd):/build" \
