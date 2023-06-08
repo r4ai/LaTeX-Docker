@@ -21,6 +21,6 @@ RUN tlmgr update --self --all && tlmgr update latex \
     svn-prov \
     ctex
 
-RUN cp -R /usr/local/texlive/2022/texmf-dist/fonts/truetype/public/ipaex/ /usr/share/fonts/truetype/ && \
-    cp -R /usr/local/texlive/2022/texmf-dist/fonts/opentype/public/haranoaji/ /usr/share/fonts/opentype/ && \
-    cp -R /usr/local/texlive/2022/texmf-dist/fonts/opentype/public/haranoaji-extra/ /usr/share/fonts/opentype/
+RUN cp -R /usr/local/texlive/2023/texmf-dist/fonts/truetype/public/ipaex/ /usr/share/fonts/truetype/ && \
+    cp -R /usr/local/texlive/2023/texmf-dist/fonts/opentype/public/haranoaji/ /usr/share/fonts/opentype/ && \
+    cp -R /usr/local/texlive/2023/texmf-dist/fonts/opentype/public/haranoaji-extra/ /usr/share/fonts/opentype/
