@@ -15,13 +15,13 @@ This repository contains the following two Dockerfiles
 
 ## how to build
 
-## r4ai/latex (texlive)
+### r4ai/latex (texlive)
 
 ```bash
 docker build -f docker/latex/Dockerfile -t r4ai/latex:latest .
 ```
 
-## r4ai/pandoc (pandoc)
+### r4ai/pandoc (pandoc)
 
 ```bash
 docker build -f docker/pandoc/Dockerfile -t r4ai/pandoc:latest .
@@ -29,9 +29,10 @@ docker build -f docker/pandoc/Dockerfile -t r4ai/pandoc:latest .
 
 ## how to use
 
-## r4ai/latex
+### r4ai/latex
 
-compile .tex and generate pdf.
+Compile .tex and generate pdf.
+For example, the following command generates a `main.pdf` from `main.tex`.
 
 ```bash
 docker run --rm -it \
@@ -39,9 +40,10 @@ docker run --rm -it \
     sh -c 'ptex2pdf -l -ot -kanji=utf8 -synctex=1 -interaction=nonstopmode -halt-on-error -file-line-error main.tex'
 ```
 
-## r4ai/pandoc
+### r4ai/pandoc
 
-Generate PDF from markdown by LaTeX
+Generate PDF from markdown by LaTeX.
+For example, the following command generates a `output.pdf` from `input.md`.
 
 ```bash
 docker run --rm \
@@ -59,6 +61,7 @@ docker run --rm \
 ```
 
 Generate PDF from markdown by html5.
+For example, the following command generates a `output.pdf` from `input.md`.
 
 ```bash
 docker run --rm \
