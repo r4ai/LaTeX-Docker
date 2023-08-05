@@ -11,9 +11,9 @@ RUN apt-get update && apt-get upgrade -y && \
     gawk \
     xz-utils \
     wkhtmltopdf
-RUN chmod -R 777 /tmp/ && \
+# Install pandoc, pandoc-crossref, easy-pandoc-templates
+RUN chmod -R +x /tmp/ && \
     /tmp/pandoc_installer.sh ${TARGETARCH} && \
-    curl 'https://raw.githubusercontent.com/ryangrose/easy-pandoc-templates/master/copy_templates.sh' | bash && \
-    chmod 777 -R /root/.pandoc/templates/
+    curl 'https://raw.githubusercontent.com/ryangrose/easy-pandoc-templates/master/copy_templates.sh' | bash &&
 ENTRYPOINT [ "/usr/bin/pandoc" ]
 WORKDIR /build

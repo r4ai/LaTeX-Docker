@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function pandoc_install() {
+function install_pandoc() {
     arch="$1"
     readonly arch
 
@@ -29,7 +29,7 @@ function pandoc_install() {
     return 0
 }
 
-function pandoc-crossref_install() {
+function install_pandoc-crossref() {
     pandoc_crossref_url=$(
         curl -s https://api.github.com/repos/lierdakil/pandoc-crossref/releases/latest |
             grep "browser_download_url.*Linux.tar.xz" |
@@ -51,7 +51,7 @@ function pandoc-crossref_install() {
         mv pandoc-crossref /usr/bin/
 }
 
-pandoc_install "$1"
+install_pandoc "$1"
 if [ "$1" == "amd64" ]; then
-    pandoc-crossref_install
+    install_pandoc-crossref
 fi
